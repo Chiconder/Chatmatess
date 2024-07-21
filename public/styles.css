@@ -1,0 +1,295 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body, html {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    font-family: 'Poppins', sans-serif; /* Cambiar la fuente a Poppins */
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.chat-container {
+    width: 100%;
+    max-width: 375px;
+    height: 844px; /* Ajusta la altura para pantallas de 390x844 */
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.header {
+    position: relative;
+    background: url('Rectangle\ 7\ \(1\).png') no-repeat center center transparent; /* Imagen de fondo */
+    background-size: cover;
+    text-align: center;
+    padding: 20px 20px 50px; /* Incrementa el padding-top para acomodar el avatar */
+    color: white;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header .text-container {
+    text-align: center;
+    margin-top: 10px; /* Añade espacio entre el avatar y el texto */
+}
+
+.header h1 {
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.header p {
+    font-size: 14px;
+    margin: 0;
+    font-weight: 300;
+}
+
+.chat-box {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.input-box {
+    display: flex;
+    padding: 10px;
+    background-color: #ffffff;
+    border-top: 1px solid #e0e0e0;
+    transition: background-color 0.5s ease, border-color 0.5s ease;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 10px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 30px;
+    outline: none;
+    transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"]:focus {
+    border-color: #007bff;
+}
+.avatar {
+    margin-right: 20px;
+}
+
+button {
+    padding: 10px;
+    background: linear-gradient(to right, #007bff, #7102FF); /* Degradado de azul a morado */
+    color: white;
+    border: none;
+    border-radius: 50%; /* Hacer el botón redondo */
+    width: 40px; /* Ajusta el ancho del botón */
+    height: 40px; /* Ajusta la altura del botón */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 20px;
+    margin-left: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.5s ease;
+}
+
+button:hover {
+    transform: scale(1.1);
+    font-size: 25px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+#dark-mode-toggle {
+    font-size: 1.5rem;
+    padding: 5px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    color: #fff;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+#dark-mode-toggle:hover {
+    transform: scale(1.2);
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.message {
+    padding: 15px;
+    border-radius: 10px;
+    max-width: 80%;
+    word-wrap: break-word; /* Ajuste para evitar desbordamiento de texto */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para las burbujas */
+    animation: slideIn 0.3s ease-in-out; /* Aplicar la animación */
+    transition: background-color 0.5s ease, color 0.5s ease, box-shadow 0.5s ease;
+    margin-top: 20px;
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: white;
+}
+
+body.dark-mode .chat-container {
+    background-color: #1e1e1e;
+}
+
+body.dark-mode .header {
+    color: white;
+}
+
+body.dark-mode .chat-box {
+    background-color: #1e1e1e;
+}
+
+body.dark-mode .input-box {
+    background-color: #333;
+    border-top: 1px solid #444;
+}
+
+body.dark-mode input[type="text"] {
+    background-color: #444;
+    color: white;
+    border: 2px solid #555;
+}
+
+body.dark-mode button {
+    background: linear-gradient(to right, #3a3a3a, #555555); /* Degradado oscuro */
+}
+
+body.dark-mode .message {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Sombra para las burbujas en modo oscuro */
+}
+
+body.dark-mode .message.bot-message {
+    background: linear-gradient(to right, #3a3a3a, #555555);
+}
+
+body.dark-mode .message.user-message {
+    background: linear-gradient(to right, #3a3a3a, #555555);
+}
+
+.user-message {
+    background: linear-gradient(to right, #1061FF, #7102FF); /* Degradado de color */
+    color: white; /* Cambiar el color del texto a blanco */
+    align-self: flex-end;
+    border: none; /* Eliminar el borde */
+    margin-left: 100px; /* Aumenta el margen a la izquierda para moverlo a la derecha */
+}
+
+/* Media query para pantallas de 390x844 */
+@media screen and (min-width: 0px)and (max-width:600px) {
+    .chat-container {
+        height: 100vh; /* Asegura que ocupe toda la altura de la pantalla */
+    }
+
+    .header {
+        padding: 10px 10px 30px; /* Reduce el padding */
+    }
+
+    .header h1 {
+        font-size: 20px; /* Reduce el tamaño de fuente */
+    }
+
+    .header p {
+        font-size: 12px; /* Reduce el tamaño de fuente */
+    }
+
+    .input-box {
+        padding: 5px; /* Reduce el padding */
+    }
+
+    button {
+        width: 35px; /* Reduce el ancho del botón */
+        height: 35px; /* Reduce la altura del botón */
+    }
+
+    #dark-mode-toggle {
+        font-size: 1.2rem; /* Reduce el tamaño de la luna */
+        top: 10px; /* Ajusta la posición */
+        right: 10px; /* Ajusta la posición */
+    }
+}
+
+/* Media query para tabletas */
+@media screen and (min-width: 600px)  {
+    .chat-container {
+        width: 80%;
+        max-width: 768px;
+        height: 100vh;
+    }
+    
+    .header {
+        background: url('Rectangle\ 23.png');
+        margin-bottom: 1px;    padding: 30px 10px 30px; /* Incrementa el padding para tabletas */
+    }
+
+    .header h1 {
+        font-size: 28px; /* Incrementa el tamaño de fuente */
+    }
+
+    .header p {
+        font-size: 18px; /* Incrementa el tamaño de fuente */
+    }
+
+    .input-box {
+        padding: 15px; /* Incrementa el padding */
+    }
+
+    button {
+        width: 45px; /* Incrementa el ancho del botón */
+        height: 45px; /* Incrementa la altura del botón */
+    }
+
+    #dark-mode-toggle {
+        font-size: 1.8rem; /* Incrementa el tamaño de la luna */
+        top: 15px; /* Ajusta la posición */
+        right: 15px; /* Ajusta la posición */
+    }
+}
+/* Animación de sombra RGB */
+
+
+/* Aplica la animación al h1 */
+.header h1 {
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.8), 0 0 20px rgba(255, 0, 0, 0.6), 0 0 30px rgba(255, 0, 0, 0.4);
+
+}
