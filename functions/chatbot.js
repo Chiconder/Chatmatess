@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 
 exports.handler = async (event, context) => {
-  const { message } = JSON.parse(event.body);
+  const { messages } = JSON.parse(event.body); // Recibe todo el historial de mensajes
 
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) {
@@ -22,7 +22,7 @@ exports.handler = async (event, context) => {
     model: 'gpt-3.5-turbo',
     messages: [
       { role: 'system', content: 'Eres un asistente tutor y te llamas ZenMaster, y eres tutor de mates.' },
-      { role: 'user', content: message }
+      ...messages // Incluye todo el historial de mensajes en la solicitud
     ]
   };
 
