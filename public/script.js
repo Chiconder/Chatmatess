@@ -23,6 +23,11 @@ function appendMessage(message, messageType) {
   // Scroll to the bottom of the chat box
   chatBox.scrollTop = chatBox.scrollHeight;
 }
+function loadTheme() {
+    const isDarkMode = JSON.parse(localStorage.getItem('darkMode'));
+    if (isDarkMode) {
+        document.body.classList.add('dark-mode');
+    }
 
 async function fetchBotResponse(userInput) {
   try {
