@@ -215,7 +215,7 @@ body.dark-mode .message.user-message {
 /* Media query para pantallas de 390x844 */
 @media screen and (min-width: 0px)and (max-width:600px) {
     .chat-container {
-        height: 100vh; /* Asegura que ocupe toda la altura de la pantalla */
+        height: 80vh; /* Asegura que ocupe toda la altura de la pantalla */
     }
 
     .header {
@@ -249,7 +249,7 @@ body.dark-mode .message.user-message {
 /* Media query para tabletas */
 @media screen and (min-width: 600px)  {
     .chat-container {
-        width: 80%;
+        width: 100%;
         max-width: 768px;
         height: 100vh;
     }
