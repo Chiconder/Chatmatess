@@ -46,3 +46,4 @@ async function fetchBotResponse(userInput) {
     appendMessage('Lo siento, hubo un error al obtener la respuesta del bot.', 'bot-message');
   }
 }
+  }
