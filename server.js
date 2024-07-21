@@ -3,7 +3,10 @@ const path = require('path');
 const dotenv = require('dotenv');
 const fetch = require('node-fetch');
 
-dotenv.config(); // Carga las variables de entorno desde el archivo .env
+// Cargar variables de entorno del archivo .env si no estamos en producción
+if (process.env.NODE_ENV !== 'production') {
+    dotenv.config();
+}
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -18,7 +21,7 @@ app.get('/', (req, res) => {
 app.post('/api/chat', async (req, res) => {
     const { message } = req.body;
 
-    const apiKey = process.env.OPENAI_API_KEY; // Verifica que esta línea obtiene la API key correctamente
+    const apiKey = process.env.OPENAI_API_KEY;
     if (!apiKey) {
         return res.status(500).json({ error: 'API key not set in environment' });
     }
@@ -46,7 +49,7 @@ app.post('/api/chat', async (req, res) => {
         });
 
         const data = await response.json();
-        console.log('API response:', data); // Añadir esta línea para depuración
+        console.log('API response:', data);
         const botMessage = data.choices[0]?.message?.content || 'No se pudo obtener respuesta del bot.';
         res.json({ botMessage });
     } catch (error) {
