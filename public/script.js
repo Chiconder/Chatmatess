@@ -9,6 +9,11 @@ document.getElementById('send-btn').addEventListener('click', function() {
   }
 });
 
+  function loadTheme() {
+    const isDarkMode = JSON.parse(localStorage.getItem('darkMode'));
+    if (isDarkMode) {
+        document.body.classList.add('dark-mode');
+    }
 function appendMessage(message, messageType) {
   const messageElement = document.createElement('div');
   messageElement.className = `message ${messageType}`;
@@ -23,12 +28,6 @@ function appendMessage(message, messageType) {
   // Scroll to the bottom of the chat box
   chatBox.scrollTop = chatBox.scrollHeight;
 }
-function loadTheme() {
-    const isDarkMode = JSON.parse(localStorage.getItem('darkMode'));
-    if (isDarkMode) {
-        document.body.classList.add('dark-mode');
-    }
-
 async function fetchBotResponse(userInput) {
   try {
     const response = await fetch('/.netlify/functions/chatbot', {
