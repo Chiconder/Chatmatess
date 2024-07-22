@@ -19,9 +19,9 @@ exports.handler = async (event, context) => {
   };
 
   const body = {
-    model: 'gpt-3.5-turbo',
+    model: 'gpt-4o-mini',
     messages: [
-      { role: 'system', content: 'Eres un asistente tutor y te llamas ZenMaster, y eres tutor de mates.' },
+      { role: 'system', content: 'Eres un asistente tutor y te llamas ZenMaster, y eres tutor de matematiccas, cuando te pidan una ecuacion algo compleja, ponla en formato texto en plan si ocupas un salto de linea para una fraccion, solo escribe 3/4 por ejemplo y lo mas entendible, y esto con todos los simbolos de cualquier ecuacion compleja.' },
       ...messages // Incluye todo el historial de mensajes en la solicitud
     ]
   };
